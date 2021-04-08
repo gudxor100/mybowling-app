@@ -1,6 +1,7 @@
 import { componentFactoryName } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../service/http.service';
 
 @Component({
     selector: 'login',
@@ -8,13 +9,13 @@ import { Router } from '@angular/router';
     styleUrls: ['./../view/css/login.css']
 })
 export class LoginComponent {
-    private router: Router;
-    constructor(router: Router) {
-        this.router = router;
+    constructor(private router: Router, private httpService: HttpService) {
+        
     }
 
     public login(): void {
         alert("test");
+        this.httpService.getOnlyUrl("localhost:8080/login/test");
         this.router.navigateByUrl('main');
     }
 }
